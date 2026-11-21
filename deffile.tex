@@ -1,0 +1,139 @@
+%**************************************************************%
+%                   File Name: deffile.tex                     %
+%                                                              %
+%  ISOPE Conference Paper LaTeX Style Definitions              %
+%  Adapted from the Official ISOPE Template by M. Kashiwagi    %
+%  Updated for standard pdfLaTeX / XeLaTeX / Tectonic &        %
+%  US Letter (8.5in x 11in) ISOPE Proceedings Camera-Ready     %
+%**************************************************************%
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%% Style of Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ps@isopefoot{\let\@mkboth=\@gobbletwo
+ \def\@oddhead{}
+ \def\@evenhead{}
+ \def\@oddfoot{\hbox to \textwidth
+   {\footnotesize {Paper No.\,2027-\papernumber} \hfil
+   {\firstauthorname} \hfil {Page number:\ \thepage\ of\ \totalpage}}}
+ \def\@evenfoot{\hbox to \textwidth
+   {\footnotesize {Paper No.\,2027-\papernumber} \hfil
+   {\firstauthorname} \hfil {Page number:\ \thepage\ of\ \totalpage}}}
+}%
+%---------------------------------------------------------------
+\setcounter{topnumber}{4}
+\def\topfraction{0.95}
+\setcounter{bottomnumber}{3}
+\def\bottomfraction{0.90}
+\setcounter{totalnumber}{6}
+\def\textfraction{0.05}
+\def\floatpagefraction{0.85}
+%
+\setcounter{dbltopnumber}{4}
+\def\dbltopfraction{0.95}
+\def\dblfloatpagefraction{0.85}
+%---------------------------------------------------------------
+% Clean ISOPE caption formatting (flush baseline, zero overfull hbox)
+\long\def\@makecaption#1#2{%
+  \vskip 4\p@
+  \footnotesize\baselineskip=9.8pt
+  \sbox\@tempboxa{#1 #2}%
+  \ifdim \wd\@tempboxa >\hsize
+    \noindent #1 #2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip 2\p@
+}
+%--------------------------------------------------------
+\def\fnum@figure{{\footnotesize\bf Fig.\,\thefigure.}}
+\def\fnum@table{{\footnotesize\bf Table\,\thetable.}}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\thesection{}
+\def\thesubsection{}
+\def\thesubsubsection{}
+%
+\def\section{\@startsection{section}{1}{\z@}
+{1.4ex plus .2ex minus .15ex}{0.65ex plus .1ex}{\small\bf}}
+\def\subsection{\@startsection{subsection}{2}{\z@}
+{1.0ex plus .15ex minus .15ex}{0.45ex plus .1ex}{\footnotesize\bf}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}
+{0.8ex plus .15ex minus .1ex}{0.35ex plus .1ex}{\footnotesize\it}}
+%
+\def\paragraph{\@startsection{paragraph}{4}{\z@}
+{0.8ex plus .2ex minus .1ex}{-1em}{\footnotesize\bf}}
+\def\subparagraph{\@startsection{subparagraph}{4}
+{\parindent}{0.8ex plus .2ex minus .1ex}{-1em}{\footnotesize\it}}
+%---------------------------------------------------------------------
+\def\@cite#1#2{\,[{\hbox{#1\if@tempswa , #2\fi}}]}
+%
+\makeatother
+%---------------------------------------------------------------
+% Flush-left ISOPE unnumbered section commands
+\def\jsection#1{\section*{\uppercase{#1}}}
+\def\jsubsection#1{\subsection*{#1}}
+\def\jsubsubsection#1{\subsubsection*{#1}}
+%---------------------------------------------------------------
+% Guard Japanese pLaTeX macro for full compatibility with pdfLaTeX / XeLaTeX / Tectonic
+\providecommand{\autospacing}{}
+\autospacing
+%
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+%
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\bfl}{\begin{flushleft}}
+\newcommand{\efl}{\end{flushleft}}
+\newcommand{\bfr}{\begin{flushright}}
+\newcommand{\efr}{\end{flushright}}
+\newcommand{\ds}{\displaystyle}
+%---------------------------------------------------------------
+\newcommand{\mbf}[1]{\mbox{\boldmath$#1$}}
+\newcommand{\ubar}[1]{\overline{#1}}
+\newcommand{\hs}{\hspace*{0.2mm}}
+\newcommand{\npar}{\par\vspace*{4pt}}
+%
+% Hanging-indent ISOPE reference entry (author-year style, unnumbered)
+\newcommand{\isoperef}[1]{%
+  \par\noindent\hangindent=4.2mm\hangafter=1{\fontsize{7.4}{8.5}\selectfont #1}\par\vspace*{0.45mm}%
+}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Official ISOPE Letter-size (215.9mm x 279.4mm) layout geometry
+\setlength{\textheight}  {243.0mm}
+\setlength{\textwidth}   {191.9mm}
+\setlength{\columnsep}   {8.9mm}
+\setlength{\parindent}   {0.0mm}
+\setlength{\parskip}     {2.6pt plus 0.6pt minus 0.3pt}
+\setlength{\mathindent}  {0.0mm}
+% Tight, balanced float spacing
+\setlength{\floatsep}        {5pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}    {7pt plus 2pt minus 2pt}
+\setlength{\intextsep}       {6pt plus 2pt minus 2pt}
+\setlength{\dblfloatsep}     {5pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep} {7pt plus 2pt minus 2pt}
+\setlength{\abovedisplayskip}{3.5pt plus 1pt minus 1pt}
+\setlength{\belowdisplayskip}{3.5pt plus 1pt minus 1pt}
+%
+\newlength{\mybaselineskip}
+\setlength{\mybaselineskip}{9.85pt}
+\newlength{\myleftmargin}
+\newlength{\mytopmargin}
+%%%%%% For the US Letter size (ISOPE Format: 8.5in x 11in) %%%%
+\setlength{\myleftmargin}  {12.0mm}
+\setlength{\mytopmargin}   {10.5mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\oddsidemargin} {-1in}
+\setlength{\topmargin}     {-1in}
+\addtolength{\oddsidemargin}{\myleftmargin}
+\addtolength{\topmargin}    {\mytopmargin}
+\setlength{\headheight}  { 0.0mm}
+\setlength{\headsep}     { 8.0mm}
+\setlength{\footskip}    {13.0mm}
+%
+\sloppy
